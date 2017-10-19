@@ -3,8 +3,13 @@
 #include <string.h>
 #include <stdbool.h>
 
-char * allowFlags[] = {"/help", "/flag"};
+#define VERSION "1.1"
+
+void cmdHelp(void);
+void cmdVer(void);
+char * allowFlags[] = {"--help", "--version"};
 int volAllowFlags = sizeof allowFlags/sizeof allowFlags[0];
+
 
 void checkValidateFlags(int vol, char ** arr) {
 	bool statusFlag = false;
@@ -15,6 +20,7 @@ void checkValidateFlags(int vol, char ** arr) {
 			if(strcmp(arr[i], allowFlags[j]) == 0) {
 				statusFlag = true;
 				errFlag = -1;
+				break;
 				//printf("True\n");
 			}
 			else {
@@ -33,19 +39,24 @@ void checkValidateFlags(int vol, char ** arr) {
 	}
 }
 
+void execCommands(int counter, char ** commands) {
+
+}
+
+void cmdHelp(void) {
+	printf("Help.\n");
+}
+
+void cmdVer() {
+	printf("Ver. %s\n", VERSION);
+}
+
 int main (int argc, char ** argv) {
 
 	if(argc > 1) checkValidateFlags(argc, argv);
-	
-	if(argc == 2)
-		for(int i = 1; i < argc; i++)
-			if(strcmp(argv[i], "/help") == 0) {
-				printf("\r\nUsing:\r\n");
-				printf("    %-15s        %s %s\r\n", argv[0], "[/help]", "[/flag]");
-				printf("\r\n");
-				printf("Parameters:\r\n");
-				printf("    %-15s        %-25s\r\n", "/help", "call help");
-			}
+	else printf("Login to the program.\n");
+
+	execCommands(argc, argv);	
 	
 	return EXIT_SUCCESS;
 }
