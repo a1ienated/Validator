@@ -9,7 +9,7 @@ void cmdHelp(void);
 void cmdVer(void);
 
 char * allowFlags[] = {"--help", "--version"};
-void (*cmdStore[])(void) = {cmdHelp, cmdVer}
+void (*cmdStore[])(void) = {cmdHelp, cmdVer};
 int volArrFlags = sizeof allowFlags/sizeof allowFlags[0];
 
 void checkValidateFlags(int vol, char ** arr) {
