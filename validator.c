@@ -8,7 +8,7 @@
 void cmdHelp(void);
 void cmdVer(void);
 char * allowFlags[] = {"--help", "--version"};
-int volAllowFlags = sizeof allowFlags/sizeof allowFlags[0];
+int volArrFlags = sizeof allowFlags/sizeof allowFlags[0];
 
 
 void checkValidateFlags(int vol, char ** arr) {
@@ -16,7 +16,7 @@ void checkValidateFlags(int vol, char ** arr) {
 	char errFlag = -1;
 	for(int i = 1; i < vol; i++) {
 		statusFlag = false;
-		for(int j = 0; j < volAllowFlags; j++) {
+		for(int j = 0; j < volArrFlags; j++) {
 			if(strcmp(arr[i], allowFlags[j]) == 0) {
 				statusFlag = true;
 				errFlag = -1;
