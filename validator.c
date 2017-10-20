@@ -41,11 +41,14 @@ void checkValidateFlags(int vol, char ** arr) {
 }
 
 void execCommands(int counter, char ** commands) {
-
+	for(int i = 1; i < counter; i++)
+		for(int j = 0; j < volArrFlags; j++)
+			if(strcmp(commands[i], allowFlags[j]) == 0)
+				cmdStore[j]();
 }
 
 void cmdHelp(void) {
-	printf("Help.\n");
+	printf("Outputs Help information.\n");
 }
 
 void cmdVer() {
